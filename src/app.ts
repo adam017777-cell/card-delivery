@@ -11,7 +11,6 @@ const port = 3000;
 
 app.use(cors());
 
-
 app.use(express.static(__dirname));
 
 app.use(
@@ -30,7 +29,6 @@ const uri = 'mongodb://localhost:27017/cardDeliveryDB';
 
 const db = mongoose.createConnection(uri);
 
-
 db.connect().then(() => {
     console.log("Connected to MongoDB");
 }).catch((err: Error) => {
@@ -41,5 +39,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname));
 
 app.get("/", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "\\Homepage.html"))
+    res.sendFile(path.join(__dirname, "\\Login.tsx"))
 })
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
+
