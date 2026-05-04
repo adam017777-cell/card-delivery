@@ -38,11 +38,9 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+src/node_modules/
 
-card-delivery/src/node_modules/
-
-card-delivery/node_modules/
+/node_modules/
 
 jspm_packages/
 
