@@ -39,8 +39,11 @@ build/Release
 
 # Dependency directories
 node_modules/
-src/node_modules/
-Card-Delivery/node_modules/
+
+card-delivery/src/node_modules/
+
+card-delivery/node_modules/
+
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
