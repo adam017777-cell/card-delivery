@@ -2,10 +2,11 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-    ,"start": "ts-node src/app.ts"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/app.ts",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,17 @@
     "express": "^5.2.1",
     "typescript": "^6.0.3",
     "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/uuid": "^14.0.0",
+    "eslint": "^8.0.0"
+  },
+  "eslintConfig": {
+  "rules": {
+    "no-restricted-imports": "off",
+    "@typescript-eslint/no-restricted-imports": ["error", { ... }]
   }
+}
 }

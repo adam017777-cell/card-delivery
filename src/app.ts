@@ -1,13 +1,12 @@
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
-const {v4: uuidv5} = require("uuid");
-const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const path = require("path");
 import type { Request, Response } from "express";
 
 const app = express();
-const port = 3000;
 
 app.use(cors());
 
@@ -25,24 +24,11 @@ app.use(
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json());
 
-const uri = 'mongodb://localhost:27017/cardDeliveryDB';
-
-const db = mongoose.createConnection(uri);
-
-db.connect().then(() => {
-    console.log("Connected to MongoDB");
-}).catch((err: Error) => {
-    console.error("Error connecting to MongoDB:", err);
-});
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname));
 
 app.get("/", (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, "\\Login.tsx"))
-})
-
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    res.sendFile(path.join(__dirname, "\\Login.tsx"));
 });
 
+exports.default = app;
