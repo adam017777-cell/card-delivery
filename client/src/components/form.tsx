@@ -9,8 +9,10 @@ interface formProps {
     onClose: () => void;
 }
 
-const makeCard = ({ onSave, onClose }: formProps) => {
+const MakeCard = ({ onSave, onClose }: formProps) => {
     const { register, handleSubmit, formState : { errors, isSubmitting } } = useForm<Card>();
+
+    
 
     async function onFormSubmit(data: CardMake) {
         try {
@@ -49,4 +51,4 @@ const makeCard = ({ onSave, onClose }: formProps) => {
     );
 }
 
-export default makeCard;
+export default MakeCard;
