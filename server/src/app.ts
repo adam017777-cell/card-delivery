@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const path = require("path");
 import type { Request, Response, NextFunction } from "express";
+import createHttpError = require("http-errors");
 const cardsRoutes = require("./routes/cards");
 const morgan = require("morgan");
 
@@ -30,13 +31,23 @@ app.use(
     })
 )
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    next(createHttpError(404, "Not Found"));
+});
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error("Error fetching cards:", err);
+    let statusCode = 500;
+    let message = "Internal Server Error";
+    if (createHttpError.isHttpError(err)) {
+        statusCode = err.status;
+        message = err.message;
+    }
         if (err instanceof Error) {
-            res.status(500).json({ error: err.message });
+            res.status(statusCode).json({ error: message });
         }
 });
 
 
-exports.default = app;
+module.exports = app;
