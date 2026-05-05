@@ -1,0 +1,19 @@
+.card {
+    background-color: white;
+    width: 700px;
+    height: 500px;
+    border-radius: 8%;
+    box-shadow: 0 0 20px black;
+    justify-content: center;
+    margin-top: 100px;
+    padding-top: 50px;
+}
+
+.card:hover {
+    height: 900px;
+    width: 700px;
+    box-shadow: 0 0 30px black;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}

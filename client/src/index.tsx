@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // @ts-ignore
-import './index.css';
+import './global.css';
 // @ts-ignore
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
