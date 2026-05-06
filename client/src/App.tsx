@@ -4,7 +4,6 @@ const MakeCard = require('./components/form').default;
 const useState = React.useState;
 const CardModel = require('./models/cards').Card;
 const api = require('./network/cards_api');
-const styles = require('./styles/global.css');
 const Card = require('./components/Card').default;
 
 
@@ -35,11 +34,12 @@ function App() {
       alert('Failed to delete card. Please try again later.');
     }
   };
+
   return (
     <div>
       <Button onClick={() => setShowForm(true)}>Create Card</Button>
       { cards.map((card) => (
-        <Card key={card._id} card={card} onDelete = {deleteCard} />
+                <Card key={card._id} card={card} onDelete={deleteCard} />
       )) }
     {
       showForm && <MakeCard onSave={() => {}} onClose={() => setShowForm(false)}/>

@@ -1,5 +1,3 @@
-import exp from "constants";
-
 const { Card } = require('../models/cards');
 
 export interface CardMake {
@@ -36,6 +34,14 @@ export async function DeleteCard(id: string, options?: RequestInit): Promise<Res
 
 export async function GetCards(): Promise<Response> {
     const response = await fetch('/api/cards', { method: 'GET' });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response;
+}
+
+export async function GetCardById(id: string): Promise<Response> {
+    const response = await fetch(`/api/cards/${id}`, { method: 'GET' })
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
